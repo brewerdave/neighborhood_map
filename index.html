@@ -2,15 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Neighborhood Map</title>
-  <link rel="stylesheet" type="text/css" href="css/main.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
-  <div id="map"></div>
+  <div class="container-fluid">
+    <div class="three columns mapList">
+      <ul class="locations" data-bind="foreach: locations">
+        <li data-bind="text: title, click: $root.openInfoWindow"></li>
+      </ul>
+    </div>
+    <div class="nine columns" id="map"></div>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="js/bootstrap.js"></script>
   <script src="js/knockout-3.4.2.js"></script>
+  <script src="js/models.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/viewmodel.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqpusjGk4BUq1T2MbCLy6ZFy6Q621Sv3w&callback=initMap"
   async defer></script>
 </body>

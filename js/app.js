@@ -1,42 +1,44 @@
-var map;
-var infoWindow;
-var markers = [];
-
-var locations = [
-  {
-    title: 'Humphrey\'s Peak', 
-    position:{lat: 35.346704, lng: -111.678544}
-  },
-  {
-    title: 'test2',
-    position:{lat: 35.17, lng: -111.63}
-  }
-];
-
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 35.1812727, lng: -111.6429784},
     zoom: 12,
     mapTypeId: 'satellite'
   });
+
+  var bounds = new google.maps.LatLngBounds();
+  infoWindow = new google.maps.InfoWindow();
 
   // Initialize markers
   locations.forEach(function(location) {
     var title = location.title;
     var position = location.position;
+    // Extend map bounds to include marker
+    bounds.extend(position);
     
     marker = new google.maps.Marker({
       map: map,
       title: title,
-      position: position
+      position: position,
+      animation: google.maps.Animation.DROP
     });
+
+    markers.push(marker);
+    marker.addListener('click', function(){
+      openInfoWindow(this);
+    })
   }, this);
+
+  // Extend map and center it based on the markers
+  map.fitBounds(bounds);
+  map.setCenter(bounds.getCenter());
 }
 
-var AppViewModel = function() {
-  for (var marker in markers){
-    markers[marker].setVisible(false);
+function openInfoWindow(marker) {
+  if(infoWindow.marker != marker) {
+    infoWindow.marker = marker;
+    infoWindow.setContent(marker.title);
+    infoWindow.open(map, marker);
+    infoWindow.addListener('closeclick', function() {
+      infoWindow.marker = null;
+    });
   }
-};
-
-ko.applyBindings(new AppViewModel());
+}
