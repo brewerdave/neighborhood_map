@@ -12,12 +12,17 @@
 </head>
 <body>
   <div class="container-fluid">
-    <div class="three columns mapList">
-      <ul class="locations" data-bind="foreach: locations">
-        <li data-bind="text: title, click: $root.openInfoWindow"></li>
-      </ul>
+    <div class="row" id="mapRow">
+      <div class="col-sm-3" id="mapList">
+        <form>
+          <input placeholder="Search..." type="search" class="form-control" data-bind="text-input: query">
+        </form>
+        <ul class="locations" data-bind="foreach: locations">
+          <li data-bind="text: title, click: $root.openInfoWindow"></li>
+        </ul>
+      </div>
+      <div class="col-sm-9" id="map"></div>
     </div>
-    <div class="nine columns" id="map"></div>
   </div>
   
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -1,13 +1,12 @@
-* {
+html, body {
   height: 100%;
 }
 
 #map {
-  height: 100%;
   margin: 0px;
   padding: 0px;
 }
 
-#mapList {
+#mapList, #mapRow, #map, .container-fluid {
   height: 100%;
 }
