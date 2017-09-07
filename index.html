@@ -13,15 +13,17 @@
 <body>
   <div class="container-fluid">
     <div class="row" id="mapRow">
-      <div class="col-sm-3" id="mapList">
+      <div class="col-sm-2" id="mapList">
         <form>
-          <input placeholder="Search..." type="search" class="form-control" data-bind="text-input: query">
+          <input placeholder="Search..." type="search" class="form-control" name="search" data-bind="textInput: searchQuery">
         </form>
-        <ul class="locations" data-bind="foreach: locations">
-          <li data-bind="text: title, click: $root.openInfoWindow"></li>
-        </ul>
+        <div data-bind="visible: locationList().length > 0">
+          <ul class="list-group locationList" data-bind="foreach: locationList">
+            <li class="list-group-item" data-bind="text: title, click: $root.openInfoWindow"></li>
+          </ul>
+        </div>
       </div>
-      <div class="col-sm-9" id="map"></div>
+      <div class="col-sm-10" id="map"></div>
     </div>
   </div>
   

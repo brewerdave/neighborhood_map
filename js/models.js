@@ -6,7 +6,7 @@ var map;
 var infoWindow;
 var markers = [];
 
-var flickrEndpoint = 'https://api.flickr.com/services';
+var flickrEndpoint = 'https://api.flickr.com/services/rest/?';
 var flickrKey = '19bbce6274264e089fdd63de5e40c8b2';
 
 var locations = [

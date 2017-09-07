@@ -10,3 +10,7 @@ html, body {
 #mapList, #mapRow, #map, .container-fluid {
   height: 100%;
 }
+
+.locationList {
+  cursor: default;
+}
